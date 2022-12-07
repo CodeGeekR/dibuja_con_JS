@@ -194,7 +194,13 @@ function obtenerColor() {
   }
 }
 
-//<!-- JavaScript (opcional jQuery para WhatsApp) -->
-$(document).ready(function () {
-  // Agrega cualquier código JavaScript que quieras aquí
-});
+//<!-- Funcion que activa una nueva pestaña para Chat WhatsApp (jQuery para WhatsApp) -->
+function addChatWp() {
+  var botonWhatsApp = document.querySelector(".boton-whatsapp");
+
+  botonWhatsApp.addEventListener("click", function (event) {
+    event.preventDefault();
+    window.open("https://wa.me/+573132007146", "_blank");
+  });
+}
+window.addEventListener("load", addChatWp);
