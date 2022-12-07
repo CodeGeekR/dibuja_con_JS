@@ -44,6 +44,15 @@ function actualizarColor(color) {
   colorElegido = color;
 }
 
+// Función que devuelve el color elegido por el usuario cuando el botón Borrador está desactivado
+function obtenerColor() {
+  // Si el modo borrador está desactivado
+  if (!modoBorrador) {
+    // Devuelve el color elegido por el usuario
+    return colorElegido;
+  }
+}
+
 // Agrega un listener al canvas para el evento mousedown
 canvas.addEventListener("mousedown", (event) => {
   // Obtiene la posición del mouse en el canvas
@@ -53,7 +62,7 @@ canvas.addEventListener("mousedown", (event) => {
   // Inicia un nuevo trazo en el canvas
   papel.beginPath();
   // Establece el color del trazo
-  papel.strokeStyle = colorElegido;
+  papel.strokeStyle = obtenerColor();
   // Establece el grosor del trazo
   papel.lineWidth = 3;
   // Mueve la posición del lápiz al punto donde se ha presionado el mouse
@@ -67,6 +76,8 @@ canvas.addEventListener("mousemove", (event) => {
     // Obtiene la posición del mouse en el canvas
     x = event.offsetX;
     y = event.offsetY;
+    // Establece el color del trazo utilizando la función obtenerColor
+    papel.strokeStyle = obtenerColor();
 
     // Dibuja una línea hasta la posición del mouse
     papel.lineTo(x, y);
@@ -86,7 +97,7 @@ canvas.addEventListener("touchstart", (event) => {
   // Inicia un nuevo trazo en el canvas
   papel.beginPath();
   // Establece el color del trazo
-  papel.strokeStyle = colorElegido;
+  papel.strokeStyle = obtenerColor();
   // Establece el grosor del trazo
   papel.lineWidth = 3;
   // Mueve la posición del lápiz al punto donde se ha tocado el canvas
@@ -102,6 +113,8 @@ canvas.addEventListener("touchmove", (event) => {
   // Calcula la posición del dedo en el canvas
   x = touch.pageX - canvasElement.offsetLeft;
   y = touch.pageY - canvasElement.offsetTop;
+  // Establece el color del trazo utilizando la función obtenerColor
+  papel.strokeStyle = obtenerColor();
 
   // Dibuja una línea hasta la posición del dedo
   papel.lineTo(x, y);
@@ -111,7 +124,7 @@ canvas.addEventListener("touchmove", (event) => {
 
 // Agrega un botón de borrador y un listener para cuando se haga click en él
 const borrarBoton = document.createElement("button");
-borrarBoton.setAttribute("id", "borrador");
+borrarBoton.setAttribute("id", "borrar");
 borrarBoton.textContent = "Borrar";
 document.body.appendChild(borrarBoton);
 
@@ -128,8 +141,55 @@ borrarBoton.addEventListener("click", (event) => {
     // Cambia la apariencia del puntero del mouse cuando está sobre el canvas
     canvas.style.cursor =
       "url('https://github.com/CodeGeekR/dibuja_con_JS/blob/main/eraser-tool-24.png?raw=true'), auto";
+    // Establece el color del trazo en blanco
+    borrar(); // Llama a la función Borrador
   } else {
     // Reestablece la apariencia del puntero del mouse cuando no está sobre el canvas
     canvas.style.cursor = "auto";
   }
 });
+
+// Crea una función Borrador que cambia el color del trazo a blanco
+function borrar() {
+  // Establece el color del trazo en blanco
+  papel.strokeStyle = "#FFFFFF";
+
+  // Inicia un nuevo trazo en el canvas cuando se presiona el mouse o se toca el canvas
+  canvas.addEventListener("mousedown", (event) => {
+    // Obtiene la posición del mouse en el canvas
+    x = event.offsetX;
+    y = event.offsetY;
+
+    // Inicia un nuevo trazo en el canvas
+    papel.beginPath();
+    // Establece el color del trazo
+    papel.strokeStyle = "#FFFFFF";
+    // Establece el grosor del trazo
+    papel.lineWidth = 3;
+    // Mueve la posición del lápiz al punto donde se ha presionado el mouse
+    papel.moveTo(x, y);
+  });
+  canvas.addEventListener("touchstart", (event) => {
+    // Obtiene la posición del dedo en el canvas
+    const touch = event.touches[0];
+    x = touch.clientX;
+    y = touch.clientY;
+
+    // Inicia un nuevo trazo en el canvas
+    papel.beginPath();
+    // Establece el color del trazo
+    papel.strokeStyle = "#FFFFFF";
+    // Establece el grosor del trazo
+    papel.lineWidth = 3;
+    // Mueve la posición del lápiz al punto donde se ha tocado el canvas
+    papel.moveTo(x, y);
+  });
+}
+
+function obtenerColor() {
+  // Si el modo borrador está desactivado
+  if (!modoBorrador) {
+    // Devuelve el color elegido por el usuario
+    return colorElegido;
+  }
+}
