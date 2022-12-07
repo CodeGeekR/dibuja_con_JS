@@ -64,3 +64,42 @@ canvas {
     display: block;
     background-color: white;
 }
+
+  /* Animacion y posicion del boton Whatsapp */
+  .boton-whatsapp {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   transition: all 0.3s ease-in-out;
+}
+
+.boton-whatsapp:hover {
+   transform: translateY(-5px);
+}
+
+@media only screen and (max-width: 600px) {
+   .boton-whatsapp {
+      bottom: 10px;
+      right: 10px;
+   }
+}
+
+.boton-whatsapp:hover:before {
+  content: "Chatea con el desarrollador de esta web!";
+  font-size: small;
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-65%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  animation: fadeIn 0.5s ease-in-out;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  -webkit-transform: translateX(-65%);
+  -moz-transform: translateX(-65%);
+  -ms-transform: translateX(-65%);
+  -o-transform: translateX(-65%);
+}
