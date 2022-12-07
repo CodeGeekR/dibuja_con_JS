@@ -10,6 +10,7 @@ body {
   label {
     display: block;
     margin: 10px 0;
+    margin-bottom: 20px;
   }
 
   h1 {
@@ -61,4 +62,5 @@ canvas {
     margin-bottom: 20px;
     text-align: center;
     display: block;
+    background-color: white;
 }
