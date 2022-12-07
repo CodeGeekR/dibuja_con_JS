@@ -64,7 +64,7 @@ canvas.addEventListener("mousedown", (event) => {
   // Establece el color del trazo
   papel.strokeStyle = obtenerColor();
   // Establece el grosor del trazo
-  papel.lineWidth = 3;
+  papel.lineWidth = 7;
   // Mueve la posición del lápiz al punto donde se ha presionado el mouse
   papel.moveTo(x, y);
 });
@@ -99,7 +99,7 @@ canvas.addEventListener("touchstart", (event) => {
   // Establece el color del trazo
   papel.strokeStyle = obtenerColor();
   // Establece el grosor del trazo
-  papel.lineWidth = 3;
+  papel.lineWidth = 7;
   // Mueve la posición del lápiz al punto donde se ha tocado el canvas
   papel.moveTo(x, y);
 });
@@ -193,3 +193,8 @@ function obtenerColor() {
     return colorElegido;
   }
 }
+
+//<!-- JavaScript (opcional jQuery para WhatsApp) -->
+$(document).ready(function () {
+  // Agrega cualquier código JavaScript que quieras aquí
+});
