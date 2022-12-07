@@ -75,6 +75,40 @@ canvas.addEventListener("mousemove", (event) => {
   }
 });
 
+// Agrega un listener al canvas para el evento touchstart
+canvas.addEventListener("touchstart", (event) => {
+  // Obtiene el elemento canvas y la posición del dedo en el canvas
+  const canvasElement = event.touches[0].target;
+  const touch = event.touches[0];
+  x = touch.clientX - canvasElement.offsetLeft;
+  y = touch.clientY - canvasElement.offsetTop;
+
+  // Inicia un nuevo trazo en el canvas
+  papel.beginPath();
+  // Establece el color del trazo
+  papel.strokeStyle = colorElegido;
+  // Establece el grosor del trazo
+  papel.lineWidth = 3;
+  // Mueve la posición del lápiz al punto donde se ha tocado el canvas
+  papel.moveTo(x, y);
+});
+
+// Agrega un listener al canvas para el evento touchmove
+canvas.addEventListener("touchmove", (event) => {
+  // Obtiene la posición del dedo en el canvas
+  const touch = event.targetTouches[0];
+  // Obtiene el elemento canvas
+  const canvasElement = touch.target;
+  // Calcula la posición del dedo en el canvas
+  x = touch.pageX - canvasElement.offsetLeft;
+  y = touch.pageY - canvasElement.offsetTop;
+
+  // Dibuja una línea hasta la posición del dedo
+  papel.lineTo(x, y);
+  // Dibuja el trazo en el canvas
+  papel.stroke();
+});
+
 // Agrega un botón de borrador y un listener para cuando se haga click en él
 const borrarBoton = document.createElement("button");
 borrarBoton.setAttribute("id", "borrador");
@@ -93,56 +127,9 @@ borrarBoton.addEventListener("click", (event) => {
   if (modoBorrador) {
     // Cambia la apariencia del puntero del mouse cuando está sobre el canvas
     canvas.style.cursor =
-      "url('https://github.com/CodeGeekR/peso_planeta/blob/main/paper-eraser.png?raw=true'), auto";
+      "url('https://github.com/CodeGeekR/dibuja_con_JS/blob/main/eraser-tool-24.png?raw=true'), auto";
   } else {
     // Reestablece la apariencia del puntero del mouse cuando no está sobre el canvas
     canvas.style.cursor = "auto";
   }
-});
-
-// Agrega un listener al canvas para el evento mousedown
-canvas.addEventListener("mousedown", (event) => {
-  // Si el modo borrador está activo
-  if (modoBorrador) {
-    // Obtiene la posición del mouse en el canvas
-    const x = event.offsetX;
-    const y = event.offsetY;
-    // Borra el contenido del canvas en la posición del mouse
-    papel.clearRect(x, y, 1, 1);
-  }
-});
-
-// Agrega un listener al canvas para el evento touchstart
-canvas.addEventListener("touchstart", (event) => {
-  // Obtiene la posición del dedo en el canvas
-  const touch = event.touches[0];
-  x = touch.clientX;
-  y = touch.clientY;
-
-  // Inicia un nuevo trazo en el canvas
-  papel.beginPath();
-  // Establece el color del trazo
-  papel.strokeStyle = colorElegido;
-  // Establece el grosor del trazo
-  papel.lineWidth = 3;
-  // Mueve la posición del lápiz al punto donde se ha tocado el canvas
-  papel.moveTo(x, y);
-});
-
-// Agrega un listener al canvas para el evento touchmove
-canvas.addEventListener("touchmove", (event) => {
-  // Obtiene la posición del dedo en el canvas
-  const touch = event.targetTouches[0];
-  // Obtiene la posición del viewport y del canvas en la página
-  const viewportOffset = canvas.getBoundingClientRect();
-  const top = viewportOffset.top;
-  const left = viewportOffset.left;
-  // Calcula la posición del dedo en el canvas
-  x = touch.pageX - left;
-  y = touch.pageY - top;
-
-  // Dibuja una línea hasta la posición del dedo
-  papel.lineTo(x, y);
-  // Dibuja el trazo en el canvas
-  papel.stroke();
 });
