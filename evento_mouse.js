@@ -132,9 +132,14 @@ canvas.addEventListener("touchstart", (event) => {
 // Agrega un listener al canvas para el evento touchmove
 canvas.addEventListener("touchmove", (event) => {
   // Obtiene la posición del dedo en el canvas
-  const touch = event.touches[0];
-  x = touch.clientX;
-  y = touch.clientY;
+  const touch = event.targetTouches[0];
+  // Obtiene la posición del viewport y del canvas en la página
+  const viewportOffset = canvas.getBoundingClientRect();
+  const top = viewportOffset.top;
+  const left = viewportOffset.left;
+  // Calcula la posición del dedo en el canvas
+  x = touch.pageX - left;
+  y = touch.pageY - top;
 
   // Dibuja una línea hasta la posición del dedo
   papel.lineTo(x, y);
