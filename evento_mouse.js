@@ -111,3 +111,33 @@ canvas.addEventListener("mousedown", (event) => {
     papel.clearRect(x, y, 1, 1);
   }
 });
+
+// Agrega un listener al canvas para el evento touchstart
+canvas.addEventListener("touchstart", (event) => {
+  // Obtiene la posición del dedo en el canvas
+  const touch = event.touches[0];
+  x = touch.clientX;
+  y = touch.clientY;
+
+  // Inicia un nuevo trazo en el canvas
+  papel.beginPath();
+  // Establece el color del trazo
+  papel.strokeStyle = colorElegido;
+  // Establece el grosor del trazo
+  papel.lineWidth = 3;
+  // Mueve la posición del lápiz al punto donde se ha tocado el canvas
+  papel.moveTo(x, y);
+});
+
+// Agrega un listener al canvas para el evento touchmove
+canvas.addEventListener("touchmove", (event) => {
+  // Obtiene la posición del dedo en el canvas
+  const touch = event.touches[0];
+  x = touch.clientX;
+  y = touch.clientY;
+
+  // Dibuja una línea hasta la posición del dedo
+  papel.lineTo(x, y);
+  // Dibuja el trazo en el canvas
+  papel.stroke();
+});
