@@ -97,9 +97,4 @@ canvas {
   border-radius: 5px;
   white-space: pre-wrap;
   animation: fadeIn 0.5s ease-in-out;
-  -webkit-animation: fadeIn 0.5s ease-in-out;
-  -webkit-transform: translateX(-65%);
-  -moz-transform: translateX(-65%);
-  -ms-transform: translateX(-65%);
-  -o-transform: translateX(-65%);
 }
