@@ -106,6 +106,8 @@ canvas.addEventListener("touchstart", (event) => {
 
 // Agrega un listener al canvas para el evento touchmove
 canvas.addEventListener("touchmove", (event) => {
+  // Evita que el evento touchmove se propague al elemento padre
+  event.preventDefault();
   // Obtiene la posición del dedo en el canvas
   const touch = event.targetTouches[0];
   // Obtiene el elemento canvas
@@ -171,9 +173,10 @@ function borrar() {
   });
   canvas.addEventListener("touchstart", (event) => {
     // Obtiene la posición del dedo en el canvas
+    const canvasElement = event.touches[0].target;
     const touch = event.touches[0];
-    x = touch.clientX;
-    y = touch.clientY;
+    x = touch.clientX - canvasElement.offsetLeft;
+    y = touch.clientY - canvasElement.offsetTop;
 
     // Inicia un nuevo trazo en el canvas
     papel.beginPath();
