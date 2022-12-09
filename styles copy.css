@@ -1,0 +1,119 @@
+/* Establece el fondo de la página */
+body {
+    background-image: url("78.jpeg");
+    background-repeat: yes;
+    background-position: center top;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    color: #E3D2B4;
+  }
+  
+  /* Esta regla se aplica a los botones de color cuando el mouse pase por encima */
+.color-button:hover {
+  /* Aumentamos el tamaño del botón al pasar el mouse */
+  transform: scale(1.2);
+  /* Agregamos una transición para que la animación sea suave */
+  transition: transform 0.3s;
+  }
+
+/* Esta regla se aplica a los botones de color cuando se haga click */
+.color-button:active {
+  /*Disminuimoseltamañodelbotónalhacerclick*/transform: scale(0.8);
+  /*Agregamosunatransiciónparaquelaanimaciónseasuave*/transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  -moz-transition: transform 0.3s;
+  -ms-transition: transform 0.3s;
+  -o-transition: transform 0.3s;
+}
+
+.button_click {
+  border-color: #8b8678;
+  color: rgb(15, 14, 14);
+  box-shadow: 0 0 40px 40px hsla(236, 8%, 35%, 0.626) inset, 0 0 0 0 #6f5b34b2;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.button_click:hover {
+  box-shadow: 0 0 10px 0 #c2ab88 inset, 0 0 10px 4px #be9d80;
+}
+
+  #botoncito {
+    display: block;
+    padding: 5px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  /* Establece la posición del canvas */
+canvas {
+    border: 1.5px solid #503426;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block;
+    background-color: white;
+}
+
+  /* posicion del boton Whatsapp */
+  .boton-whatsapp {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   transition: all 0.3s ease-in-out;
+}
+
+/* Animacion de elevacion*/
+.boton-whatsapp:hover {
+   transform: translateY(-5px);
+}
+
+@media only screen and (max-width: 600px) {
+   .boton-whatsapp {
+      bottom: 10px;
+      right: 10px;
+   }
+}
+
+/*animación de ondas circulares en movimiento al borde del icono de WhatsApp*/
+
+.boton-whatsapp:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  animation: pulse 2s infinite;
+}
+
+.boton-whatsapp:hover:before {
+  animation-play-state: paused;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}

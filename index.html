@@ -5,11 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dibujando con canvas</title>
+
   </head>
   <link rel="stylesheet" href="styles.css" />
   <body>
     <h1>Dibujando con JavaScript</h1>
     <br /><br />
+    <ul class="background">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    
+
     <!-- Formulario para seleccionar el tamaño del canvas -->
     <div class="format">
       <form action="Pixeles" method="get">
@@ -68,7 +83,7 @@
       ></button>
       <br /><br />
       <!-- Canvas para dibujar -->
-      <canvas width="300" height="300" id="Area de dibujo"></canvas>
+      <canvas width="300" height="300" id="Area de dibujo" style="z-index: 1;"></canvas>
       <script src="evento_mouse.js"></script>
     </div>
     <div href="#" class="boton-whatsapp">

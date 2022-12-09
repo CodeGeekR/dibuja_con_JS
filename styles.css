@@ -1,21 +1,23 @@
 /* Establece el fondo de la página */
+html{
+  height: 100%;
+}
+
 body {
-    background-image: url("78.jpeg");
-    background-repeat: yes;
-    background-position: center top;
     font-family: 'Open Sans', sans-serif;
     text-align: center;
   }
   
-  label {
+label {
     display: block;
     margin: 10px 0;
     margin-bottom: 20px;
   }
 
-  h1 {
+h1 {
     color: #E3D2B4;
   }
+
   
   /* Esta regla se aplica a los botones de color cuando el mouse pase por encima */
 .color-button:hover {
@@ -27,12 +29,8 @@ body {
 
 /* Esta regla se aplica a los botones de color cuando se haga click */
 .color-button:active {
-  /*Disminuimoseltamañodelbotónalhacerclick*/transform: scale(0.8);
-  /*Agregamosunatransiciónparaquelaanimaciónseasuave*/transition: transform 0.3s;
-  -webkit-transition: transform 0.3s;
-  -moz-transition: transform 0.3s;
-  -ms-transition: transform 0.3s;
-  -o-transition: transform 0.3s;
+  transform: scale(0.8); /*Disminuimoseltamañodelbotónalhacerclick*/
+  transition: transform 0.3s; /*Agregamosunatransiciónparaquelaanimaciónseasuave*/
 }
 
 .button_click {
@@ -116,4 +114,155 @@ canvas {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
+}
+
+/* Animar paleta de colores */
+.button-paleta {
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+#button-palette {
+  background-image:url("https://github.com/CodeGeekR/dibuja_con_JS/blob/main/rueda-de-color-2-48.png?raw=true");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.358);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  border-radius: 65%;
+}
+
+#button-palette:hover {
+  transform: scale(1.1);
+}
+
+#button-palette:active {
+  transform: scale(0.9);
+}
+
+#palette {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Animar backgound */
+
+@keyframes animate {
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+  }
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+  }
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #584fc9;
+  overflow: hidden;
+  z-index: -1;
+}
+.background li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 19s linear infinite;
+}
+
+.background li:nth-child(0) {
+  left: 35%;
+  width: 106px;
+  height: 106px;
+  bottom: -106px;
+  animation-delay: 1s;
+}
+.background li:nth-child(1) {
+  left: 64%;
+  width: 136px;
+  height: 136px;
+  bottom: -136px;
+  animation-delay: 5s;
+}
+.background li:nth-child(2) {
+  left: 22%;
+  width: 164px;
+  height: 164px;
+  bottom: -164px;
+  animation-delay: 10s;
+}
+.background li:nth-child(3) {
+  left: 7%;
+  width: 163px;
+  height: 163px;
+  bottom: -163px;
+  animation-delay: 3s;
+}
+.background li:nth-child(4) {
+  left: 66%;
+  width: 152px;
+  height: 152px;
+  bottom: -152px;
+  animation-delay: 4s;
+}
+.background li:nth-child(5) {
+  left: 23%;
+  width: 184px;
+  height: 184px;
+  bottom: -184px;
+  animation-delay: 23s;
+}
+.background li:nth-child(6) {
+  left: 85%;
+  width: 193px;
+  height: 193px;
+  bottom: -193px;
+  animation-delay: 2s;
+}
+.background li:nth-child(7) {
+  left: 26%;
+  width: 197px;
+  height: 197px;
+  bottom: -197px;
+  animation-delay: 1s;
+}
+.background li:nth-child(8) {
+  left: 60%;
+  width: 108px;
+  height: 108px;
+  bottom: -108px;
+  animation-delay: 21s;
+}
+.background li:nth-child(9) {
+  left: 24%;
+  width: 128px;
+  height: 128px;
+  bottom: -128px;
+  animation-delay: 6s;
 }
